@@ -1,0 +1,279 @@
+/* DASHBOARD GRID - QUANTICO PRO */
+.dashboard {
+    display: grid;
+    /* 
+       4-Column Grid:
+       R1: Header (Full)
+       R2: KPIs (4 cards)
+       R3: Bubble (2) | Top (1) | Donut (1) [No Gaps]
+       R4: Parallel Coords (Full)
+       R5: Table (Full)
+    */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto minmax(360px, auto) minmax(300px, auto) minmax(400px, auto);
+    gap: 1.5rem;
+    width: 100%;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Explicit assignments */
+.header {
+    grid-column: 1 / -1;
+}
+
+/* Full Width */
+.statCard {
+    min-height: 110px;
+}
+
+/* Row 3 Items */
+.chartBubble {
+    grid-column: span 2;
+}
+
+.chartTop {
+    grid-column: span 1;
+}
+
+.chartType {
+    grid-column: span 1;
+}
+
+/* Moved Donut here */
+
+/* Row 4 Items */
+.chartParallel {
+    grid-column: 1 / -1;
+}
+
+/* Row 5 Items */
+.smartTable {
+    grid-column: 1 / -1;
+}
+
+
+/* GENERAL CARD STYLES */
+.chartBubble,
+.chartTop,
+.chartType,
+.chartParallel,
+.smartTable {
+    background: #0f172a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Glass hint */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.chartTitle {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+}
+
+.chartWrapper,
+.relativeWrapper {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    min-height: 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #f8fafc;
+    letter-spacing: -1px;
+}
+
+.proBadge {
+    color: #38bdf8;
+    font-weight: 300;
+    font-size: 0.6em;
+    vertical-align: super;
+    margin-left: 5px;
+}
+
+.secondaryBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.secondaryBtn:hover {
+    border-color: #38bdf8;
+    color: #38bdf8;
+}
+
+/* KPI CARDS */
+.statCard {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.statLabel {
+    color: #64748b;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.statRight {
+    text-align: right;
+}
+
+.val {
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1;
+}
+
+.statRight small {
+    display: block;
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+/* DONUT CENTER */
+.donutCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.donutCenter span {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #f8fafc;
+    line-height: 1;
+}
+
+/* SMART TABLE */
+.tableWrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+thead th {
+    text-align: left;
+    color: #64748b;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    color: #cbd5e1;
+}
+
+.typeTag {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Highlight Logic */
+.topRow td {
+    background: rgba(56, 189, 248, 0.03);
+    /* Subtle blue tint for top performers */
+}
+
+.topRow td:first-child {
+    font-weight: 700;
+    color: #38bdf8;
+    position: relative;
+}
+
+.topRow td:first-child::before {
+    content: 'TOP';
+    font-size: 0.6rem;
+    background: #38bdf8;
+    color: #000;
+    padding: 1px 4px;
+    border-radius: 2px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.highVal {
+    color: #fbbf24;
+    /* Warn color if metric is high */
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .chartBubble,
+    .chartParallel {
+        grid-column: span 2;
+    }
+
+    .chartTop,
+    .chartType {
+        grid-column: span 1;
+    }
+}

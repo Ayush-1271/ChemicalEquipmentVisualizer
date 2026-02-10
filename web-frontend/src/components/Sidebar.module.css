@@ -1,0 +1,120 @@
+.container {
+    width: 80px;
+    height: 100vh;
+    background: #020617;
+    /* Deep Navy */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+/* Logo */
+.logoArea {
+    margin-bottom: 4rem;
+}
+
+.logoBadge {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Nav Items */
+.navGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: center;
+    flex: 1;
+}
+
+.navItem {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-out;
+}
+
+.navItem:hover {
+    color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navItem.active {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.iconWrapper svg {
+    display: block;
+}
+
+/* Footer */
+.footerGroup {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.logoutBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    color: #f43f5e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.7;
+}
+
+.logoutBtn:hover {
+    background: rgba(244, 63, 94, 0.1);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.2);
+}
+
+.activeIndicator {
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background: #38bdf8;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 10px #38bdf8;
+}
